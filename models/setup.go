@@ -5,7 +5,7 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
 
-var gormDB *gorm.DB
+var Database *gorm.DB
 
 func ConnectDatabase() {
 	db, err := gorm.Open("sqlite3", "test.db")
@@ -16,5 +16,5 @@ func ConnectDatabase() {
 
 	db.AutoMigrate(&Book{})
 
-	gormDB = db
+	Database = db
 }

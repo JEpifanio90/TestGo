@@ -1,23 +1,19 @@
 package main
 
 import (
-	"fmt"
+	"github.com/JEpifanio90/JestGO/controllers"
 	"github.com/JEpifanio90/JestGO/models"
 	"github.com/gin-gonic/gin"
-	"net/http"
 )
 
 func init() {
-	fmt.Println("Trying to connect to db")
 	models.ConnectDatabase()
 }
 
 func main() {
 	r := gin.Default()
 
-	r.GET("", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{"data": "hello world"})
-	})
+	r.GET("/books", controllers.FindBooks)
 
 	err := r.Run()
 

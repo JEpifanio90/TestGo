@@ -4,8 +4,11 @@ go 1.17
 
 replace github.com/JEpifanio90/JestGO/models => ./models
 
+replace github.com/JEpifanio90/JestGO/controllers => ./controllers
+
 require (
-	github.com/JEpifanio90/JestGO/models v0.0.0-00010101000000-000000000000
+	github.com/JEpifanio90/JestGO/controllers v0.0.0-00010101000000-000000000000
+	github.com/JEpifanio90/JestGO/models v0.0.0-20220212035308-475e706cf68a
 	github.com/gin-gonic/gin v1.7.7
 )
 
