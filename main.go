@@ -11,11 +11,15 @@ func init() {
 }
 
 func main() {
-	r := gin.Default()
+	engine := gin.Default()
 
-	r.GET("/books", controllers.FindBooks)
+	engine.GET("/books", controllers.FindBooks)
+	engine.POST("/books", controllers.CreateBook)
+	engine.GET("/books/:id", controllers.FindBook)
+	engine.PATCH("/books/:id", controllers.UpdateBook)
+	engine.DELETE("/books/:id", controllers.DeleteBook)
 
-	err := r.Run()
+	err := engine.Run()
 
 	if err != nil {
 		panic(err)
