@@ -1,7 +1,6 @@
 # JestGO 🃏
 
 ![Version](https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000)
-[![License: MIT](https://img.shields.io/badge/License-UNLICENSED-yellow.svg)](https://opensource.org/licenses/UNLICENSED)
 [![Bot](https://github.com/JEpifanio90/JestGO/actions/workflows/bot.yml/badge.svg)](https://github.com/JEpifanio90/JestGO/actions/workflows/bot.yml)
 
 > Rest API made with GO, Gin and GORM
