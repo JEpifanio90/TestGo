@@ -2,9 +2,15 @@ package main
 
 import (
 	"fmt"
+	"github.com/JEpifanio90/JestGO/models"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
+
+func init() {
+	fmt.Println("Trying to connect to db")
+	models.ConnectDatabase()
+}
 
 func main() {
 	r := gin.Default()
@@ -16,6 +22,6 @@ func main() {
 	err := r.Run()
 
 	if err != nil {
-		fmt.Println("Shit's on fire yo!", err)
+		panic(err)
 	}
 }
