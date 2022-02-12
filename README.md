@@ -15,10 +15,6 @@
 * Github: [@JEpifanio90](https://github.com/JEpifanio90)
 * LinkedIn: [@joseepifanio](https://linkedin.com/in/joseepifanio)
 
-## Show your support
-
-Give a ⭐️ if this project helped you!
-
 ## 📝 License
 
 Copyright © 2022 [Jose Epifanio](https://github.com/JEpifanio90).
