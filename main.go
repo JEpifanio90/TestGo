@@ -12,6 +12,8 @@ func init() {
 
 func main() {
 	engine := gin.Default()
+	engine.Use(gin.Logger())
+	engine.Use(gin.Recovery())
 
 	engine.POST("/login", controllers.Login)
 	engine.POST("/register", controllers.Register)
