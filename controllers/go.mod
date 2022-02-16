@@ -4,7 +4,9 @@ go 1.17
 
 require (
 	github.com/JEpifanio90/JestGO/models v0.0.0-20220212035308-475e706cf68a
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gin-gonic/gin v1.7.7
+	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9
 )
 
 require (
@@ -22,7 +24,6 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421 // indirect
 	github.com/modern-go/reflect2 v0.0.0-20180701023420-4b7aa43c6742 // indirect
 	github.com/ugorji/go/codec v1.1.7 // indirect
-	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9 // indirect
 	golang.org/x/sys v0.0.0-20200323222414-85ca7c5b95cd // indirect
 	gopkg.in/yaml.v2 v2.2.8 // indirect
 )

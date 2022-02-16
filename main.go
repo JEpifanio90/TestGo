@@ -13,6 +13,8 @@ func init() {
 func main() {
 	engine := gin.Default()
 
+	engine.POST("/login", controllers.Login)
+	engine.POST("/register", controllers.Register)
 	engine.GET("/books", controllers.FindBooks)
 	engine.POST("/books", controllers.CreateBook)
 	engine.GET("/books/:id", controllers.FindBook)
