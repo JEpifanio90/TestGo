@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"github.com/JEpifanio90/JestGO/models"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
@@ -11,12 +12,13 @@ import (
 )
 
 const SecretKey = "jester"
+const title = "Auth"
 
 func Register(ctx *gin.Context) {
 	var rawUser models.IUser
 
 	if err := ctx.ShouldBindJSON(&rawUser); err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		ctx.JSON(http.StatusBadRequest, gin.H{"title": fmt.Sprintf("%s-Register", title), "message": err.Error(), "status": http.StatusBadRequest})
 		return
 	}
 
@@ -37,25 +39,21 @@ func Login(ctx *gin.Context) {
 	var credentials models.ICredentials
 
 	if err := ctx.ShouldBindJSON(&credentials); err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		ctx.JSON(http.StatusBadRequest, gin.H{"title": fmt.Sprintf("%s-Login", title), "message": err.Error(), "status": http.StatusBadRequest})
 		return
 	}
 
 	var user models.User
-	// title: string;
-	//  message: string;
-	//  code: string;
-	//  status: StatusCodes;
 
 	models.Database.Where("email = ?", credentials.Email).First(&user)
 
 	if user.Id == 0 {
-		ctx.JSON(http.StatusNotFound, gin.H{"message": "Invalid Credentials"})
+		ctx.JSON(http.StatusNotFound, gin.H{"title": fmt.Sprintf("%s-Login", title), "message": "Invalid Credentials", "status": http.StatusNotFound})
 		return
 	}
 
 	if err := bcrypt.CompareHashAndPassword(user.Password, []byte(credentials.Password)); err != nil {
-		ctx.JSON(http.StatusNotFound, gin.H{"message": "Invalid credentials"})
+		ctx.JSON(http.StatusNotFound, gin.H{"title": fmt.Sprintf("%s-Login", title), "message": "Invalid Credentials", "status": http.StatusNotFound})
 		return
 	}
 
@@ -66,7 +64,7 @@ func Login(ctx *gin.Context) {
 	rToken, rErr := rClaims.SignedString([]byte(SecretKey))
 
 	if err != nil || rErr != nil {
-		ctx.JSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
+		ctx.JSON(http.StatusInternalServerError, gin.H{"title": fmt.Sprintf("%s-Login", title), "message": err.Error(), "status": http.StatusInternalServerError})
 		return
 	}
 
